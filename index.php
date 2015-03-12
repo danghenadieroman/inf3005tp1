@@ -7,7 +7,7 @@
     </head>
     <body>
         <?php
-        // modification1
+        // modification2
         ?>
     </body>
 </html>
