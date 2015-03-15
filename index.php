@@ -1,7 +1,7 @@
-<!DOCTYPE html>
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
 
 $fichierTransmis = $_FILES['nomDuFichier']['name'];
 //echo "Fichier transmis: ". $fichierTransmis. "<br />";
@@ -20,78 +20,119 @@ echo "Stocke dans : ".$fichierCopie;
 }
 echo "<br>";
 $nomImage = "images/img".$fichierTransmis;
-$img = '<img src="'.$nomImage.'" border="0"/>';
+$img = '<img src="'.$nomImage.'" id = "monImage"/>';
 
 
 $imgTmp = ImageCreateFromJpeg("$nomImage");
-//echo ImageSX($imgTmp);
+echo ImageSX($imgTmp);
 $largeur = ImageSX($imgTmp);
 echo "<br>";
-//echo ImageSY($imgTmp);
+echo ImageSY($imgTmp);
 $hauteur = ImageSY($imgTmp);
 
 
 $ratio = $largeur / $hauteur;
-$hauteur1 = (int)(500 / $ratio / 37.79);
-$hauteur2 = (int)(800 / $ratio / 37.79);
-$hauteur3 = (int)(1000 / $ratio / 37.79);
+$hauteur1 = (500 / $ratio);
+$hauteur2 = (800 / $ratio);
+$hauteur3 = (1000 / $ratio);
 
 
-}
+//}
 ?>
 
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="Style.css"/>
+<script type="text/javascript" src="index.js"></script>
 </head>
 <body>
-    
-<br />
-Dimensions:
-<select > <br />
-<option >13 x <?php echo $hauteur1 ?> cm</option> <br />
-<option >21 x <?php echo $hauteur2 ?> cm</option> <br />
-<option >26 x <?php echo $hauteur2 ?> cm</option> <br />
-</select > <br />
-    
+ 
     <div id="photo">
         <?php echo $img; ?>
     </div>
+    
+<br />
 
-Grandeur des marges:
-<select name="profondeur">
-    <option value = "3" >3 cm</option>
-    <option value = "4" >4 cm</option>
-    <option value = "5" >5 cm</option>
-  </select>
-        <br>
+
+Dimensions:
+<select id="mySelect" onchange="sizeFunction()"> <br />
+<option > </option> <br />
+<option >13 x <?php echo (int)($hauteur1/37.79)  ?> cm</option> <br />
+<option >21 x <?php echo (int)($hauteur2/37.79)  ?> cm</option> <br />
+<option >26 x <?php echo (int)($hauteur3/37.79)  ?> cm</option> <br />
+</select > <br />
+
+<p id="demo"></p>
+
+<script>
+
+</script>
+    
+    
+
+
 Type de materiel:
   <select id="frameType">
-    <option value = "Bois" >Bois</option>
-    <option value = "Metal" >Metal</option>
+    <option value = "bois" >Bois</option>
+    <option value = "metal" >Metal</option>
+  </select>
+        <br>
+Profondeur des marges:
+<select name="profondeur">
+    <option value = "1">1 cm</option>
+    <option value = "2" >2 cm</option>
+    <option value = "3" >3 cm</option>
+  </select>
+        <br>
+Largeur des marges:
+<select id="largeurMarges" onchange="margeFunction()">
+    <option > </option> <br />
+    <option >1 cm</option>
+    <option >2 cm</option>
+    <option >3 cm</option>
+  </select>
+        <br>
+ <p id="marges"></p>
+<script>
+
+</script>
+        
+Modele de cadre:
+  <select id="framePart" onchange="frameFunction()">
+    <option ></option>
+    <option value = "top" >Haut</option>
+    <option value = "rihgt" >Droit</option>
+    <option value = "bottom" >Bas</option>
+    <option value = "left" >Gauche</option>
   </select>
         <br>
         
-Modele de cadre:
-  <select id="frameSize">
-    <option value = "Haut" >Haut</option>
-    <option value = "Droit" >Droit</option>
-    <option value = "Bas" >Bas</option>
-    <option value = "Gauche" >Gauche</option>
-  </select>
-        <br>
+<p id="frame"></p>
+
+<script>
+
+</script>
+
+
+
 Couleur de cadre:
-  <select id="frameColor">
-    <option value = "Rouge" >Rouge</option>
-    <option value = "Noir" >Noir</option>
-    <option value = "Brun" >Brun</option>
-    <option value = "Blanc" >Blanc</option>
-    <option value = "Bleu" >Bleu</option>
+  <select id="frameColor" onchange="colorFunction()">
+    <option ></option>
+    <option value = "red" >Rouge</option>
+    <option value = "black" >Noir</option>
+    <option value = "brown" >Brun</option>
+    <option value = "white" >Blanc</option>
+    <option value = "blue" >Bleu</option>
   </select>
+
+<p id="color"></p>
+
+
+<script>
+
+</script>
          <br>
-    
-    
-    
+   
 <form action="final.php" method="post"  enctype="multipart/form-data" >
 <input type="submit" name="terminer" value="Terminer" />
 </form>

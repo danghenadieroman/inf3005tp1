@@ -3,4 +3,9 @@ div#photo{
     left: 400px;
     top: 50px;
 }
-
+#monImage{
+    border: 30px solid;
+}
+p{
+    display: none;
+}
