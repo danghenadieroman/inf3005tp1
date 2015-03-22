@@ -36,19 +36,27 @@ function margeFunction() {
     
 }
 
+var sidecolor;
+var scolor;
+
 function frameFunction() {
-    var x = document.getElementById("framePart").value;
-    document.getElementById("frame").innerHTML = x;
-    if(x === "top"){
+    var value = document.getElementById("framePart").value;
+    document.getElementById("frame").innerHTML = value;
+    if(value === "top"){
         document.getElementById("monImage").style.borderTopColor  = colorFunction();
-    }else if(x === "bottom"){
+        document.getElementById("topcolor").value = "top".concat(colorFunction());
+    }else if(value === "bottom"){
         document.getElementById("monImage").style.borderBottomColor  = colorFunction();
-    }else if(x === "rihgt"){
+        document.getElementById("bottomcolor").value = "bottom".concat(colorFunction());
+    }else if(value === "right"){
         document.getElementById("monImage").style.borderRightColor  = colorFunction();
-    }else if(x === "left"){
+        document.getElementById("rightcolor").value = "right".concat(colorFunction());
+    }else if(value === "left"){
         document.getElementById("monImage").style.borderLeftColor  = colorFunction();
+        document.getElementById("leftcolor").value = "left".concat(colorFunction());
     }
-}
+       
+} 
 
 function colorFunction() {
     var x = document.getElementById("frameColor");
@@ -66,8 +74,43 @@ function colorFunction() {
     }else if(i === 5){
         color = "blue";
     }
+   
    return color;
     
 }
 
+//function myFunction() {
+//    document.getElementById("topcolor").innerHTML = "Paragraph changed!";
+//}
+
+function materielFunction(){
+    var value = document.getElementById("frameType").value;
+    document.getElementById("materiel").innerHTML = value;
+    if(value === "metal"){
+        document.getElementById("monImage").style.borderColor  = "lightgray";
+    }else{
+        document.getElementById("monImage").style.borderColor  = "burlywood";
+    }
+}
+
+function validateDimentions() {
+    
+    var dimentions = document.getElementById("mySelect").value;
+    if (dimentions == null || dimentions == "") {
+        alert("Vous devez choisir les dimentions!");
+        return false;
+    }
+    }
+    
+function profondeurFunction(){
+     var value = document.getElementById("profondeur").value;
+    document.getElementById("profondeurMarges").innerHTML = value;
+    if(value === "1cm"){
+        document.getElementById("monImage").style.boxShadow = "10px 10px 5px #888888";
+    }else if(value === "2cm"){
+        document.getElementById("monImage").style.boxShadow = "20px 20px 5px #888888";
+    }else if(value === "3cm"){
+        document.getElementById("monImage").style.boxShadow = "30px 30px 5px #888888";
+    }
+}
 

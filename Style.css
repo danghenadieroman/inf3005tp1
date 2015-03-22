@@ -5,7 +5,12 @@ div#photo{
 }
 #monImage{
     border: 30px solid;
+    color: burlywood;
+    outline: aqua solid 1px;
+    box-shadow: 10px 10px 5px #888888;
 }
 p{
     display: none;
 }
+
+
