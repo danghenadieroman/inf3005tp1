@@ -20,10 +20,8 @@ $nomImage = "Images/img".$fichierTransmis;
 $img = '<img src="'.$nomImage.'" id = "monImage"/>';
 
 $info   = getimagesize($nomImage);
-echo $mime   = $info['mime']. "<br />"; // mime-type as string for ex. "image/jpeg" etc.
-echo $largeur  = $info[0]. "<br />";      // width as integer for ex. 512
-echo $hauteur = $info[1]. "<br />";      // height as integer for ex. 384
-echo $type   = $info[2];  
+$largeur  = $info[0]. "<br />";      // width as integer for ex. 512
+$hauteur = $info[1]. "<br />";      // height as integer for ex. 384
 
 $ratio = $largeur / $hauteur;
 $hauteur1 = (500 / $ratio);
@@ -36,9 +34,12 @@ mysql_select_db('db_hd791183',$db);
 
 $id = $_SESSION['currentId'];
 $login = $_SESSION['logins'];
-$telephone = $_POST['telephone'];
-$adresse = $_POST['adresse'];
-$email = $_POST['email'];
+$_SESSION['telephones'] = $_POST['telephone'];
+$telephone = $_SESSION['telephones'];
+$_SESSION['adresses'] = $_POST['adresse'];
+$adresse = $_SESSION['adresses'];
+$_SESSION['emails'] = $_POST['email'];
+$email = $_SESSION['emails'];
 
 if($telephone == "" || $telephone == NULL){
    $sqlAncienTelephone = "SELECT telephone FROM commandes WHERE login='$login' and id != '$id'";
@@ -50,13 +51,10 @@ if($telephone == "" || $telephone == NULL){
         $list[$i] =  $row['telephone'];
 	 $i++;
     }
-   
-    $ancienTelephone = $list[$i - 1];
-    
-$sqlUpdateTelepnone = "UPDATE commandes SET telephone = '$ancienTelephone' WHERE login='$login' and id = '$id'";
-$reqUpdateTelepnone = mysql_query($sqlUpdateTelepnone) or die('Erreur SQL !<br>'.$sqlUpdateTelepnone.'<br>'.mysql_error());
+   $_SESSION['telephones'] = $list[$i - 1];
+    echo $_SESSION['telephones'];
 }else{
-$sqlNouveauTelepnone = "UPDATE commandes SET telephone = '$telephone' WHERE login='$login' and id = '$id'";
+$sqlNouveauTelepnone = "UPDATE commandes SET telephone = '$telephone' WHERE login='$login'";
 $reqNouveauTelepnone = mysql_query($sqlNouveauTelepnone) or die('Erreur SQL !<br>'.$sqlNouveauTelepnone.'<br>'.mysql_error());
 }
 
@@ -70,13 +68,9 @@ if($adresse == "" || $adresse == NULL){
         $list[$i] =  $row['adresse'];
 	 $i++;
     }
-   
-    $ancienAdresse = $list[$i - 1];
-    
-$sqlUpdateAdresse = "UPDATE commandes SET adresse = '$ancienAdresse' WHERE login='$login' and id = '$id'";
-$reqUpdateAdresse = mysql_query($sqlUpdateAdresse) or die('Erreur SQL !<br>'.$sqlUpdateAdresse.'<br>'.mysql_error());
+    $_SESSION['adresses'] = $list[$i - 1];
 }else{
-$sqlNouveauAdresse = "UPDATE commandes SET adresse = '$adresse' WHERE login='$login' and id = '$id'";
+$sqlNouveauAdresse = "UPDATE commandes SET adresse = '$adresse' WHERE login='$login'";
 $reqNouveauAdresse = mysql_query($sqlNouveauAdresse) or die('Erreur SQL !<br>'.$sqlNouveauAdresse.'<br>'.mysql_error());
 }
 
@@ -84,30 +78,18 @@ $reqNouveauAdresse = mysql_query($sqlNouveauAdresse) or die('Erreur SQL !<br>'.$
 if($email == "" || $email == NULL){
     $sqlAncienEmail = "SELECT email FROM commandes WHERE login='$login' and id != '$id'";
     $reqAncienEmail = mysql_query($sqlAncienEmail) or die('Erreur SQL !<br>'.$sqlAncienEmail.'<br>'.mysql_error());
-    
     $i = 0;
-    
     while($row = mysql_fetch_array($reqAncienEmail)){
         $list[$i] =  $row['email'];
 	 $i++;
     }
-   
-    $ancienEmail = $list[$i - 1];
-    
-$sqlUpdateEmail = "UPDATE commandes SET email = '$ancienEmail' WHERE login='$login' and id = '$id'";
-$reqUpdateEmail = mysql_query($sqlUpdateEmail) or die('Erreur SQL !<br>'.$sqlUpdateEmail.'<br>'.mysql_error());
+    $_SESSION['emails'] = $list[$i - 1];
 }else{
-$sqlNouveauEmail = "UPDATE commandes SET email = '$email' WHERE login='$login' and id = '$id'";
+$sqlNouveauEmail = "UPDATE commandes SET email = '$email' WHERE login='$login'";
 $reqNouveauEmail = mysql_query($sqlNouveauEmail) or die('Erreur SQL !<br>'.$sqlNouveauEmail.'<br>'.mysql_error());
 }
 
-//if(session_destroy()){
-//$sqlNouveauEmail = "DELETE FROM commandes WHERE id = '$id'";
-//$reqNouveauEmail = mysql_query($sqlNouveauEmail) or die('Erreur SQL !<br>'.$sqlNouveauEmail.'<br>'.mysql_error()); 
-//}
-
 mysql_close();
-
 
 ?>
 
@@ -205,10 +187,6 @@ Modele de cadre:
 </body>
 </html>
 
-
 <?
-
-
-
 
 ?>

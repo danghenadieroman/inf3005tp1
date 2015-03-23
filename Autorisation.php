@@ -6,10 +6,10 @@ mysql_select_db('db_hd791183',$db);
 
 
 $_SESSION['logins'] = $_POST['login'];
-
+$_SESSION['passwords'] = $_POST['password'];
 
 $login = $_SESSION['logins'];
-$password = $_POST['password'];
+$password = $_SESSION['passwords'];
 
 $sql = "SELECT email FROM commandes WHERE `login` = '$login' and `password` = '$password'";
 
@@ -20,14 +20,8 @@ $data = mysql_fetch_assoc($req);
 $arrlength = count($req);
 
 if(!$data['email'] == NULL){
-       $sqlInsertExistant = " INSERT INTO commandes (`login`, `password`, `telephone`, `adresse`,
-        `email`,`dimentions`,`materiel`,`profondeurMarges`,`largeurMarges`,`topcolor`,`bottomcolor`,
-        `rightcolor`,`leftcolor`)
-        VALUES ('$login', '$password', NULL, NULL, NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)";
-       $sqlInsertExistant = mysql_query($sqlInsertExistant) or die('Erreur SQL !<br>'.$sqlInsertExistant.'<br>'.mysql_error());
-      
-       $_SESSION['currentId'] = mysql_insert_id();
-       $id = $_SESSION['currentId'];
+      $_SESSION['currentId'] = mysql_insert_id();
+      $id = $_SESSION['currentId'];
        
     echo "Bienvenue ".$login."<br>";
     echo "Vous pouvez modifier les informations personnelles ou lesser les chaps vides ";
@@ -46,18 +40,8 @@ if(!$data['email'] == NULL){
 
 <?php
 
-} else {
-       $sqlInsert = " INSERT INTO commandes (`login`, `password`, `telephone`, `adresse`,
-        `email`,`dimentions`,`materiel`,`profondeurMarges`,`largeurMarges`,`topcolor`,`bottomcolor`,
-        `rightcolor`,`leftcolor`)
-        VALUES ('$login', '$password', NULL, NULL, NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)";
-       $reqInsert = mysql_query($sqlInsert) or die('Erreur SQL !<br>'.$sqlInsert.'<br>'.mysql_error());
-       
-       $_SESSION['currentId'] = mysql_insert_id();
-       $id = $_SESSION['currentId'];
-       
+} else {       
        header("location:PersonalInfo.html");
 }
-
 mysql_close();
 ?>
