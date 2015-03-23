@@ -1,36 +1,29 @@
 <?php
 session_start();
-//if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
 
 $fichierTransmis = $_FILES['nomDuFichier']['name'];
-//echo "Fichier transmis: ". $fichierTransmis. "<br />";
-//echo "Sa taille : ". $_FILES['nomDuFichier']['size']. "<br />";
+$fichierTransmisSize = $_FILES['nomDuFichier']['size']. "<br />";
 //echo "Son type : ". $_FILES['nomDuFichier']['type']. "<br />";
 //echo "Fichier temporaire : ". $_FILES['nomDuFichier']['tmp_name']. "<br />";
-//
 //echo "Fichier transmis: ". $fichierTransmis. "<br />";
-
 $fichierCharge= $_FILES['nomDuFichier']['tmp_name'];
-$fichierCopie='images/img'.$_FILES['nomDuFichier']['name'];
-if (!file_exists($fichierCopie)){
+$fichierCopie='Images/img'.$_FILES['nomDuFichier']['name'];
+$fichierCopieSize='Images/img'.$_FILES['nomDuFichier']['size'];
+if (!file_exists($fichierCopie)&& !($fichierTransmisSize == $fichierCopieSize)){
 move_uploaded_file($fichierCharge,$fichierCopie);
 echo "Stocke dans : ".$fichierCopie;
 }else{ 
     echo "Ce fichier existe deja!";
 }
 echo "<br>";
-$nomImage = "images/img".$fichierTransmis;
+$nomImage = "Images/img".$fichierTransmis;
 $img = '<img src="'.$nomImage.'" id = "monImage"/>';
 
-
-$imgTmp = ImageCreateFromJpeg("$nomImage");
-//echo ImageSX($imgTmp);
-$largeur = ImageSX($imgTmp);
-echo "<br>";
-//echo ImageSY($imgTmp);
-$hauteur = ImageSY($imgTmp);
-
+$info   = getimagesize($nomImage);
+echo $mime   = $info['mime']. "<br />"; // mime-type as string for ex. "image/jpeg" etc.
+echo $largeur  = $info[0]. "<br />";      // width as integer for ex. 512
+echo $hauteur = $info[1]. "<br />";      // height as integer for ex. 384
+echo $type   = $info[2];  
 
 $ratio = $largeur / $hauteur;
 $hauteur1 = (500 / $ratio);
@@ -108,8 +101,14 @@ $sqlNouveauEmail = "UPDATE commandes SET email = '$email' WHERE login='$login' a
 $reqNouveauEmail = mysql_query($sqlNouveauEmail) or die('Erreur SQL !<br>'.$sqlNouveauEmail.'<br>'.mysql_error());
 }
 
-mysql_close();
+//if(session_destroy()){
+//$sqlNouveauEmail = "DELETE FROM commandes WHERE id = '$id'";
+//$reqNouveauEmail = mysql_query($sqlNouveauEmail) or die('Erreur SQL !<br>'.$sqlNouveauEmail.'<br>'.mysql_error()); 
 //}
+
+mysql_close();
+
+
 ?>
 
 <html>
