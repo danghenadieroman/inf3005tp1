@@ -2,7 +2,7 @@
 echo "Payement!";
 session_start();
 
-$id = $_SESSION['currentId'];
+
 $login = $_SESSION['logins'];
 $password = $_SESSION['passwords'];
 $telephone = $_SESSION['telephones'];
@@ -30,5 +30,11 @@ $sql = "INSERT INTO commandes (`login`, `password`, `telephone`, `adresse`,
 
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 
+$_SESSION['currentId'] = mysql_insert_id();
+$id = $_SESSION['currentId'];
+echo $id;
+
 mysql_close();
+
+header("location:Facture.php");
 

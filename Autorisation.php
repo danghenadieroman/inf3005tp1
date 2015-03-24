@@ -12,17 +12,10 @@ $login = $_SESSION['logins'];
 $password = $_SESSION['passwords'];
 
 $sql = "SELECT email FROM commandes WHERE `login` = '$login' and `password` = '$password'";
-
-
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 
 $data = mysql_fetch_assoc($req);
-$arrlength = count($req);
-
 if(!$data['email'] == NULL){
-      $_SESSION['currentId'] = mysql_insert_id();
-      $id = $_SESSION['currentId'];
-       
     echo "Bienvenue ".$login."<br>";
     echo "Vous pouvez modifier les informations personnelles ou lesser les chaps vides ";
 ?>

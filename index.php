@@ -20,8 +20,8 @@ $nomImage = "Images/img".$fichierTransmis;
 $img = '<img src="'.$nomImage.'" id = "monImage"/>';
 
 $info   = getimagesize($nomImage);
-$largeur  = $info[0]. "<br />";      // width as integer for ex. 512
-$hauteur = $info[1]. "<br />";      // height as integer for ex. 384
+$largeur  = $info[0]. "<br />";      
+$hauteur = $info[1]. "<br />";      
 
 $ratio = $largeur / $hauteur;
 $hauteur1 = (500 / $ratio);
@@ -31,8 +31,6 @@ $hauteur3 = (1000 / $ratio);
 $db = mysql_connect('localhost','root');
 mysql_select_db('db_hd791183',$db);
 
-
-$id = $_SESSION['currentId'];
 $login = $_SESSION['logins'];
 $_SESSION['telephones'] = $_POST['telephone'];
 $telephone = $_SESSION['telephones'];
@@ -42,7 +40,7 @@ $_SESSION['emails'] = $_POST['email'];
 $email = $_SESSION['emails'];
 
 if($telephone == "" || $telephone == NULL){
-   $sqlAncienTelephone = "SELECT telephone FROM commandes WHERE login='$login' and id != '$id'";
+   $sqlAncienTelephone = "SELECT telephone FROM commandes WHERE login='$login'";
    $reqAncienTelephone = mysql_query($sqlAncienTelephone) or die('Erreur SQL !<br>'.$sqlAncienTelephone.'<br>'.mysql_error());
    
     $i = 0;
@@ -52,14 +50,13 @@ if($telephone == "" || $telephone == NULL){
 	 $i++;
     }
    $_SESSION['telephones'] = $list[$i - 1];
-    echo $_SESSION['telephones'];
 }else{
 $sqlNouveauTelepnone = "UPDATE commandes SET telephone = '$telephone' WHERE login='$login'";
 $reqNouveauTelepnone = mysql_query($sqlNouveauTelepnone) or die('Erreur SQL !<br>'.$sqlNouveauTelepnone.'<br>'.mysql_error());
 }
 
 if($adresse == "" || $adresse == NULL){
-    $sqlAncienAdresse = "SELECT adresse FROM commandes WHERE login='$login' and id != '$id'";
+    $sqlAncienAdresse = "SELECT adresse FROM commandes WHERE login='$login'";
     $reqAncienAdresse = mysql_query($sqlAncienAdresse) or die('Erreur SQL !<br>'.$sqlAncienAdresse.'<br>'.mysql_error());
     
     $i = 0;
@@ -76,7 +73,7 @@ $reqNouveauAdresse = mysql_query($sqlNouveauAdresse) or die('Erreur SQL !<br>'.$
 
 
 if($email == "" || $email == NULL){
-    $sqlAncienEmail = "SELECT email FROM commandes WHERE login='$login' and id != '$id'";
+    $sqlAncienEmail = "SELECT email FROM commandes WHERE login='$login'";
     $reqAncienEmail = mysql_query($sqlAncienEmail) or die('Erreur SQL !<br>'.$sqlAncienEmail.'<br>'.mysql_error());
     $i = 0;
     while($row = mysql_fetch_array($reqAncienEmail)){
