@@ -7,8 +7,8 @@ $fichierTransmisSize = $_FILES['nomDuFichier']['size']. "<br />";
 //echo "Fichier temporaire : ". $_FILES['nomDuFichier']['tmp_name']. "<br />";
 //echo "Fichier transmis: ". $fichierTransmis. "<br />";
 $fichierCharge= $_FILES['nomDuFichier']['tmp_name'];
-$fichierCopie='Images/img'.$_FILES['nomDuFichier']['name'];
-$fichierCopieSize='Images/img'.$_FILES['nomDuFichier']['size'];
+$fichierCopie='Images/'.$_FILES['nomDuFichier']['name'];
+$fichierCopieSize='Images/'.$_FILES['nomDuFichier']['size'];
 if (!file_exists($fichierCopie)&& !($fichierTransmisSize == $fichierCopieSize)){
 move_uploaded_file($fichierCharge,$fichierCopie);
 echo "Stocke dans : ".$fichierCopie;
@@ -16,7 +16,7 @@ echo "Stocke dans : ".$fichierCopie;
     echo "Ce fichier existe deja!";
 }
 echo "<br>";
-$nomImage = "Images/img".$fichierTransmis;
+$nomImage = "Images/".$fichierTransmis;
 $img = '<img src="'.$nomImage.'" id = "monImage"/>';
 
 $info   = getimagesize($nomImage);
@@ -42,9 +42,7 @@ $email = $_SESSION['emails'];
 if($telephone == "" || $telephone == NULL){
    $sqlAncienTelephone = "SELECT telephone FROM commandes WHERE login='$login'";
    $reqAncienTelephone = mysql_query($sqlAncienTelephone) or die('Erreur SQL !<br>'.$sqlAncienTelephone.'<br>'.mysql_error());
-   
     $i = 0;
-    
     while($row = mysql_fetch_array($reqAncienTelephone)){
         $list[$i] =  $row['telephone'];
 	 $i++;
@@ -58,9 +56,7 @@ $reqNouveauTelepnone = mysql_query($sqlNouveauTelepnone) or die('Erreur SQL !<br
 if($adresse == "" || $adresse == NULL){
     $sqlAncienAdresse = "SELECT adresse FROM commandes WHERE login='$login'";
     $reqAncienAdresse = mysql_query($sqlAncienAdresse) or die('Erreur SQL !<br>'.$sqlAncienAdresse.'<br>'.mysql_error());
-    
     $i = 0;
-    
     while($row = mysql_fetch_array($reqAncienAdresse)){
         $list[$i] =  $row['adresse'];
 	 $i++;
