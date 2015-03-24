@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Modification</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script type="text/javascript">
             function validateForm() {
-            var photo = document.getElementById("nomFichier").value;
-            if (photo == null || photo == "") {
-            alert("Un photo doit etre fournie!");
-            return false;
+                var photo = document.getElementById("nomFichier").value;
+                if (photo == null || photo == "") {
+                    alert("Un photo doit etre fournie!");
+                    return false;
+                }
             }
-        }
         </script>
     </head>
     <body>
         <form action="index.php" method="post"  enctype="multipart/form-data" onsubmit="return validateForm()">
-          Numero de telephone:<input type="text" name="telephone" /> <br/>
-          Adresse:<input type="text" name="adresse" /> <br/>
-          Courriel:<input type="text" name="email" /> <br/>
-          Selectionnez un fichier : 
-          <input type="file" name="nomDuFichier" id="nomFichier"/>
-          <input type="submit" name="envoi" value="Envoyer" />
-            </form>
+            <table>
+                <tr>
+                    <td>Numero de telephone:</td>
+                    <td><input type="text" name="telephone" /></td>
+                </tr>
+                <tr>
+                    <td>Adresse:</td>
+                    <td><input type="text" name="adresse" /></td>
+                </tr>
+                <tr>
+                    <td>Courriel:</td>
+                    <td><input type="text" name="email" /></td>
+                </tr>
+                <tr>
+                    <td>Selectionnez un fichier : </td>
+                    <td><input type="file" name="nomDuFichier" id="nomFichier"/></td>
+                </tr>
+            </table>
+            <input type="submit" name="envoi" value="Envoyer" />
+        </form>
     </body>
 </html>
