@@ -110,9 +110,9 @@ mysql_close();
             Dimensions:
             <select id="mySelect" onchange="sizeFunction()" name="dimentionSelect"> <br />
                 <option > </option> <br />
-                <option value = "13cm">13 x <?php echo (int) ($hauteur1 / 37.79) ?> cm</option> <br />
-                <option value = "21cm">21 x <?php echo (int) ($hauteur2 / 37.79) ?> cm</option> <br />
-                <option value = "26cm">26 x <?php echo (int) ($hauteur3 / 37.79) ?> cm</option> <br />
+                <option value = "13 x <?php echo (int) ($hauteur1 / 37.79) ?> cm">13 x <?php echo (int) ($hauteur1 / 37.79) ?> cm</option> <br />
+                <option value = "21 x <?php echo (int) ($hauteur2 / 37.79) ?> cm">21 x <?php echo (int) ($hauteur2 / 37.79) ?> cm</option> <br />
+                <option value = "26 x <?php echo (int) ($hauteur3 / 37.79) ?> cm">26 x <?php echo (int) ($hauteur3 / 37.79) ?> cm</option> <br />
             </select > <br />
 
             <p id="demo"></p>
