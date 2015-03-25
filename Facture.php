@@ -12,6 +12,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error
     <head>
         <title>Facture</title>
     </head>
+    <link rel="stylesheet" type="text/css" href="css/principal.css"  />
     <body>
         <h3>La facture a ete envoyee</h3><br>
         <table border="1" width="100%">

@@ -41,8 +41,8 @@ $email = $_SESSION['emails'];
 
 if ($telephone == "" || $telephone == NULL) {
     $sqlAncienTelephone = "SELECT telephone FROM commandes WHERE login='$login'";
-    $reqAncienTelephone = mysql_query($sqlAncienTelephone) or die('Erreur SQL !<br>' . $sqlAncienTelephone . '<br>' 
-            . mysql_error());
+    $reqAncienTelephone = mysql_query($sqlAncienTelephone) or die('Erreur SQL !<br>' . $sqlAncienTelephone . '<br>'
+                    . mysql_error());
     $i = 0;
     while ($row = mysql_fetch_array($reqAncienTelephone)) {
         $list[$i] = $row['telephone'];
@@ -51,14 +51,14 @@ if ($telephone == "" || $telephone == NULL) {
     $_SESSION['telephones'] = $list[$i - 1];
 } else {
     $sqlNouveauTelepnone = "UPDATE commandes SET telephone = '$telephone' WHERE login='$login'";
-    $reqNouveauTelepnone = mysql_query($sqlNouveauTelepnone) or die('Erreur SQL !<br>' . $sqlNouveauTelepnone . '<br>' 
-            . mysql_error());
+    $reqNouveauTelepnone = mysql_query($sqlNouveauTelepnone) or die('Erreur SQL !<br>' . $sqlNouveauTelepnone . '<br>'
+                    . mysql_error());
 }
 
 if ($adresse == "" || $adresse == NULL) {
     $sqlAncienAdresse = "SELECT adresse FROM commandes WHERE login='$login'";
-    $reqAncienAdresse = mysql_query($sqlAncienAdresse) or die('Erreur SQL !<br>' . $sqlAncienAdresse . '<br>' 
-            . mysql_error());
+    $reqAncienAdresse = mysql_query($sqlAncienAdresse) or die('Erreur SQL !<br>' . $sqlAncienAdresse . '<br>'
+                    . mysql_error());
     $i = 0;
     while ($row = mysql_fetch_array($reqAncienAdresse)) {
         $list[$i] = $row['adresse'];
@@ -67,15 +67,15 @@ if ($adresse == "" || $adresse == NULL) {
     $_SESSION['adresses'] = $list[$i - 1];
 } else {
     $sqlNouveauAdresse = "UPDATE commandes SET adresse = '$adresse' WHERE login='$login'";
-    $reqNouveauAdresse = mysql_query($sqlNouveauAdresse) or die('Erreur SQL !<br>' . $sqlNouveauAdresse . '<br>' 
-            . mysql_error());
+    $reqNouveauAdresse = mysql_query($sqlNouveauAdresse) or die('Erreur SQL !<br>' . $sqlNouveauAdresse . '<br>'
+                    . mysql_error());
 }
 
 
 if ($email == "" || $email == NULL) {
     $sqlAncienEmail = "SELECT email FROM commandes WHERE login='$login'";
-    $reqAncienEmail = mysql_query($sqlAncienEmail) or die('Erreur SQL !<br>' . $sqlAncienEmail . '<br>' 
-            . mysql_error());
+    $reqAncienEmail = mysql_query($sqlAncienEmail) or die('Erreur SQL !<br>' . $sqlAncienEmail . '<br>'
+                    . mysql_error());
     $i = 0;
     while ($row = mysql_fetch_array($reqAncienEmail)) {
         $list[$i] = $row['email'];
@@ -84,8 +84,8 @@ if ($email == "" || $email == NULL) {
     $_SESSION['emails'] = $list[$i - 1];
 } else {
     $sqlNouveauEmail = "UPDATE commandes SET email = '$email' WHERE login='$login'";
-    $reqNouveauEmail = mysql_query($sqlNouveauEmail) or die('Erreur SQL !<br>' . $sqlNouveauEmail . '<br>' 
-            . mysql_error());
+    $reqNouveauEmail = mysql_query($sqlNouveauEmail) or die('Erreur SQL !<br>' . $sqlNouveauEmail . '<br>'
+                    . mysql_error());
 }
 
 mysql_close();
@@ -94,6 +94,7 @@ mysql_close();
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="Style.css"/>
+        <link rel="stylesheet" type="text/css" href="css/principal.css"  />
         <script type="text/javascript" src="index.js"></script>
     </head>
     <body>

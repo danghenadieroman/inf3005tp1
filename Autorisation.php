@@ -24,6 +24,7 @@ if (!$data['email'] == NULL) {
         <head>
             <title>Modification</title>
         </head>
+        <link rel="stylesheet" type="text/css" href="css/principal.css"  />
         <body>
             <form action="Modifications.html" method="post"  enctype="multipart/form-data" >
                 <input type="submit" name="envoi" value="Continuer" />
