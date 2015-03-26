@@ -32,8 +32,12 @@ mysql_select_db('db_hd791183', $db);
 
 $login = $_SESSION['logins'];
 
-$_SESSION['password'] = $_POST['password'];
-$password = $_SESSION['password'];
+if (isset($_POST['password'])) {
+    $_SESSION['password'] = $_POST['password'];
+    $password = $_SESSION['password'];
+} else {
+    $password = $_SESSION['passwords'];
+}
 
 $_SESSION['telephones'] = $_POST['telephone'];
 $telephone = $_SESSION['telephones'];
