@@ -9,17 +9,22 @@
         <link rel="stylesheet" type="text/css" href="css/principal.css"  />
     </head>
     <body>
-        <form action="Autorisation.php" method="post"  enctype="multipart/form-data" onsubmit="return validateChamps()" >
-            <table>
-                <tr>
-                    <td>Nom d’usager:</td> <td><input type="text" name="login" id="login"/></td>
-                </tr>
-                <tr>
-                    <td>Mot de passe:</td>
-                    <td> <input type="text" name="password" id="password"/></td>
-                </tr>
-            </table>
-            <input type="submit" name="envoi" value="Envoyer" />
-        </form>
+        <div>
+            <fieldset>
+                <legend><b>Formulaire d'autorisation</b></legend>
+                <form action="Autorisation.php" method="post"  enctype="multipart/form-data" onsubmit="return validateChamps()" >
+                    <table>
+                        <tr>
+                            <td>Nom d’usager:</td> <td><input type="text" name="login" id="login"/></td>
+                        </tr>
+                        <tr>
+                            <td>Mot de passe:</td>
+                            <td> <input type="text" name="password" id="password"/></td>
+                        </tr>
+                    </table>
+                    <input type="submit" name="envoi" value="Envoyer" />
+                </form>
+            </fieldset>
+        </div>
     </body>
 </html>

@@ -74,9 +74,7 @@ function colorFunction() {
     } else if (i === 5) {
         color = "blue";
     }
-
     return color;
-
 }
 
 //function myFunction() {

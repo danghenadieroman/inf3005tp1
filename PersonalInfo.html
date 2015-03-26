@@ -8,26 +8,28 @@
         <script type="text/javascript" src="PersonalInfo.js"></script>
     </head>
     <body>
-        <form action="index.php" method="post"  enctype="multipart/form-data" onsubmit="return validateForm()">
-            <table>
-                <tr>
-                    <td>Numero de telephone:</td>
-                    <td><input type="text" name="telephone" id="telephone" /></td>
-                </tr>
-                <tr>
-                    <td>Adresse:</td>
-                    <td> <input type="text" name="adresse" id="adresse" /></td>
-                </tr>
-                <tr>
-                    <td>Courriel:</td>
-                    <td><input type="text" name="email" id="email"/></td>
-                </tr>
-                <tr>
-                    <td>Selectionnez un fichier : </td>
-                    <td><input type="file" name="nomDuFichier" id="nomDuFichier"/></td>
-                </tr>
-            </table>
-            <input type="submit" name="envoi" value="Envoyer" />
-        </form>
+        <div>
+            <form action="index.php" method="post"  enctype="multipart/form-data" onsubmit="return validateForm()">
+                <table>
+                    <tr>
+                        <td>Numero de telephone:</td>
+                        <td><input type="text" name="telephone" id="telephone" /></td>
+                    </tr>
+                    <tr>
+                        <td>Adresse:</td>
+                        <td> <input type="text" name="adresse" id="adresse" /></td>
+                    </tr>
+                    <tr>
+                        <td>Courriel:</td>
+                        <td><input type="text" name="email" id="email"/></td>
+                    </tr>
+                    <tr>
+                        <td>Selectionnez un fichier : </td>
+                        <td><input type="file" name="nomDuFichier" id="nomDuFichier"/></td>
+                    </tr>
+                </table>
+                <input type="submit" name="envoi" value="Envoyer" />
+            </form>
+        </div>
     </body>
 </html>

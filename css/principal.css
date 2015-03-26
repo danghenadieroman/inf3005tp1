@@ -1,5 +1,21 @@
 body {
-    background: #cccccb;
+    background: #000;
+    background-image: url("../img/girl1.jpg");
+    background-repeat: no-repeat;
     font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
     font-size: 14px;
+    color: #ffffff;
+}
+div {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    
+}
+
+table {
+    font-size: 14px;
+}
+select{
+    width: 100px;
 }

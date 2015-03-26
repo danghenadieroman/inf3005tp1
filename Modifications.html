@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
     <head>
         <title>Modification</title>
@@ -18,26 +17,32 @@
 
     </head>
     <body>
-        <form action="index.php" method="post"  enctype="multipart/form-data" onsubmit="return validateForm()">
-            <table>
-                <tr>
-                    <td>Numero de telephone:</td>
-                    <td><input type="text" name="telephone" /></td>
-                </tr>
-                <tr>
-                    <td>Adresse:</td>
-                    <td><input type="text" name="adresse" /></td>
-                </tr>
-                <tr>
-                    <td>Courriel:</td>
-                    <td><input type="text" name="email" /></td>
-                </tr>
-                <tr>
-                    <td>Selectionnez un fichier : </td>
-                    <td><input type="file" name="nomDuFichier" id="nomFichier"/></td>
-                </tr>
-            </table>
-            <input type="submit" name="envoi" value="Envoyer" />
-        </form>
+        <div>
+            <fieldset>
+                <legend><b>Les donnees personnels</b></legend>
+                <form action="index.php" method="post"  enctype="multipart/form-data" onsubmit="return validateForm()">
+                    <table>
+                        <tr>
+                            <td>Numero de telephone:</td>
+                            <td><input type="text" name="telephone" /></td>
+                        </tr>
+                        <tr>
+                            <td>Adresse:</td>
+                            <td><input type="text" name="adresse" /></td>
+                        </tr>
+                        <tr>
+                            <td>Courriel:</td>
+                            <td><input type="text" name="email" /></td>
+                        </tr>
+                        <tr>
+                            <td>Selectionnez un fichier : </td>
+                            <td><input type="file" name="nomDuFichier" id="nomFichier"/></td>
+                        </tr>
+                    </table>
+                    <input type="submit" name="envoi" value="Envoyer" />
+                </form>
+            </fieldset>
+
+        </div>
     </body>
 </html>
