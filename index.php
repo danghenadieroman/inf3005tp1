@@ -34,6 +34,17 @@ $_SESSION['adresses'] = $_POST['adresse'];
 $adresse = $_SESSION['adresses'];
 $_SESSION['emails'] = $_POST['email'];
 $email = $_SESSION['emails'];
+
+$sql = "SELECT email FROM commandes WHERE `login` = '$login' and `password` = '$password'";
+$req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+$data = mysql_fetch_assoc($req);
+if (!$data['email'] == NULL) {
+$_SESSION['newLogin'] = $_POST['login'];
+$_SESSION['newPassword'] = $_POST['password'];
+$a = "modifier";
+$_SESSION['cle'] = $a; 
+}
+
 if ($telephone == "" || $telephone == NULL) {
     $sqlAncienTelephone = "SELECT telephone FROM commandes WHERE login='$login' AND password='$password'";
     $reqAncienTelephone = mysql_query($sqlAncienTelephone) or die('Erreur SQL !<br>' . $sqlAncienTelephone . '<br>' 
@@ -44,7 +55,7 @@ if ($telephone == "" || $telephone == NULL) {
         $i++;
     }
     $_SESSION['telephones'] = $list[$i - 1];
-} else {
+   } else {
     $sqlNouveauTelepnone = "UPDATE commandes SET telephone = '$telephone' WHERE login='$login' AND password='$password'";
     $reqNouveauTelepnone = mysql_query($sqlNouveauTelepnone) or die('Erreur SQL !<br>' . $sqlNouveauTelepnone . '<br>' 
             . mysql_error());
