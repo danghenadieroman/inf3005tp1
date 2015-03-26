@@ -103,7 +103,7 @@ mysql_close();
         </p>
         <div>
             <fieldset>
-                <legend><b>Detail de la commande</b></legend>
+                <legend><b>Détails de la commande</b></legend>
 
                 <form action="final.php" method="post"  enctype="multipart/form-data" onsubmit="return validateDimentions()">
                     <table>
@@ -129,7 +129,7 @@ mysql_close();
                         <tr>
                             <td>
                                 <p id="demo"></p>
-                                Type de materiel:
+                                Type de matériel:
                             </td>
                             <td>
                                 <select id="frameType" name="frameType" onchange="materielFunction()">
@@ -186,7 +186,7 @@ mysql_close();
                         <tr>
                             <td>
                                 <p id="color"></p>
-                                Modele de cadre:
+                                Modèle de cadre:
                             </td>
                             <td>
                                 <select id="framePart" name="framePart" onchange="frameFunction()">

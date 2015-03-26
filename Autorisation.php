@@ -24,7 +24,7 @@
         if ($data['email'] != NULL) {
             echo "Bienvenue " . $login . "!<br><br>";
             echo "Si vous voulez vous pouvez modifier les informations personnelles <br> ";
-            echo "ou laisser les champs vides et garder l'information déja fournis";
+            echo "ou laisser tels quelles ont été déja fournis";
             ?>
             <form action="Modifications.php" method="post" enctype="multipart/form-data" >
                 <br>

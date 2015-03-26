@@ -27,13 +27,13 @@
         $login = $_SESSION['logins'];
         $password = $_SESSION['passwords'];
 
-        $telefone1 = "SELECT telephone FROM commandes WHERE `login` = '$login' and `password` = '$password'";
-        $adresse1 = "SELECT adresse FROM commandes WHERE `login` = '$login' and `password` = '$password'";
-        $email1 = "SELECT email FROM commandes WHERE `login` = '$login' and `password` = '$password'";
+        $telephones = "SELECT telephone FROM commandes WHERE `login` = '$login' and `password` = '$password'";
+        $adresses = "SELECT adresse FROM commandes WHERE `login` = '$login' and `password` = '$password'";
+        $emails = "SELECT email FROM commandes WHERE `login` = '$login' and `password` = '$password'";
 
-        $req_telefone = mysql_query($telefone1) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
-        $req_adresse = mysql_query($adresse1) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
-        $req_email = mysql_query($email1) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+        $req_telefone = mysql_query($telephones) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+        $req_adresse = mysql_query($adresses) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+        $req_email = mysql_query($emails) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
 
         $data_telephone = mysql_fetch_assoc($req_telefone);
         $data_adresse = mysql_fetch_assoc($req_adresse);
@@ -47,15 +47,15 @@
         </p>
         <div>
             <fieldset>
-                <legend><b>Les donnees personnels</b></legend>
+                <legend><b>Les données personnels</b></legend>
                 <p>
-                    Si vous avez bésoin, vous pouvez modifier vos donnees <br>
-                    directement dans le formulaire
+                    Si vous avez bésoin, vous pouvez modifier vos données <br>
+                    directement dans le formulaire avant de les envoyées
                 </p>
                 <form action = "index.php" method = "post" enctype = "multipart/form-data" onsubmit = "return validateForm()">
                     <table>
                         <tr>
-                            <td>Numero de telephone:</td>
+                            <td>Numéro de téléphone:</td>
                             <td><input type = "text" name = "telephone" value="<?php echo $data_telephone['telephone'] ?>" autofocus /></td>
                         </tr>
                         <tr>
@@ -67,7 +67,7 @@
                             <td><input type = "text" name = "email" value="<?php echo $data_email['email'] ?>"/></td>
                         </tr>
                         <tr>
-                            <td>Selectionnez un fichier : </td>
+                            <td>Séléctionnez le fichier : </td>
                             <td><input type = "file" name = "nomDuFichier" id = "nomFichier"/></td>
                         </tr>
                     </table>
