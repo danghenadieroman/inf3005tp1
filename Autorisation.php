@@ -1,57 +1,57 @@
-<html>
+<!--<html>
     <head>
         <title>Modification</title>
         <link rel="stylesheet" type="text/css" href="css/principal.css"  />
     </head>
     <body>
-        <?php
-        session_start();
-
-        $db = mysql_connect('localhost', 'root');
-        mysql_select_db('db_hd791183', $db);
-
-        $_SESSION['logins'] = $_POST['login'];
-        $_SESSION['passwords'] = $_POST['password'];
-
-        $login = $_SESSION['logins'];
-        $password = $_SESSION['passwords'];
-
-        $sql = "SELECT email FROM commandes WHERE `login` = '$login' and `password` = '$password'";
-        $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
-        
-        $loginModif = $login;
-        $passwordModif = $password;
-        $telephones = "SELECT telephone FROM commandes WHERE `login` = '$login' and `password` = '$password'";
-        $adresses = "SELECT adresse FROM commandes WHERE `login` = '$login' and `password` = '$password'";
-        $emails = "SELECT email FROM commandes WHERE `login` = '$login' and `password` = '$password'";
-
-        $req_telefone = mysql_query($telephones) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
-        $req_adresse = mysql_query($adresses) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
-        $req_email = mysql_query($emails) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
-
-        $data_telephone = mysql_fetch_assoc($req_telefone);
-        $data_adresse = mysql_fetch_assoc($req_adresse);
-        $data_email = mysql_fetch_assoc($req_email);
-
-        $data = mysql_fetch_assoc($req);
-        echo " <p> <a href=\"Autorisation.html\"><img src=\"img/home-icon-white.png\" alt=\"acceuil\" height=\"42\" width=\"42\"></a> </p>";
-        echo "<div>";
-        if ($data['email'] != NULL) {
-            echo "Bienvenue " . $login . "!<br><br>";
-            echo "Si vous voulez vous pouvez modifier les informations personnelles <br> ";
-            echo "ou laisser tels quelles ont été déja fournis";
-            ?>
+        //<?php
+//        session_start();
+//
+//        $db = mysql_connect('localhost', 'root');
+//        mysql_select_db('db_hd791183', $db);
+//
+//        $_SESSION['logins'] = $_POST['login'];
+//        $_SESSION['passwords'] = $_POST['password'];
+//
+//        $login = $_SESSION['logins'];
+//        $password = $_SESSION['passwords'];
+//
+//        $sql = "SELECT email FROM commandes WHERE `login` = '$login' and `password` = '$password'";
+//        $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+//        
+//        $loginModif = $login;
+//        $passwordModif = $password;
+//        $telephones = "SELECT telephone FROM commandes WHERE `login` = '$login' and `password` = '$password'";
+//        $adresses = "SELECT adresse FROM commandes WHERE `login` = '$login' and `password` = '$password'";
+//        $emails = "SELECT email FROM commandes WHERE `login` = '$login' and `password` = '$password'";
+//
+//        $req_telefone = mysql_query($telephones) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+//        $req_adresse = mysql_query($adresses) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+//        $req_email = mysql_query($emails) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+//
+//        $data_telephone = mysql_fetch_assoc($req_telefone);
+//        $data_adresse = mysql_fetch_assoc($req_adresse);
+//        $data_email = mysql_fetch_assoc($req_email);
+//
+//        $data = mysql_fetch_assoc($req);
+//        echo " <p> <a href=\"Autorisation.html\"><img src=\"img/home-icon-white.png\" alt=\"acceuil\" height=\"42\" width=\"42\"></a> </p>";
+//        echo "<div>";
+//        if ($data['email'] != NULL) {
+//            echo "Bienvenue " . $login . "!<br><br>";
+//            echo "Si vous voulez vous pouvez modifier les informations personnelles <br> ";
+//            echo "ou laisser tels quelles ont été déja fournis";
+//            ?>
             <form action="Modifications.php" method="post" enctype="multipart/form-data" >
                 <br>
                 <input type="submit" name="envoi" value="Continuer" />
             </form>
-            <?php
-        } else {
-            header("location:PersonalInfo.html");
-        }
-      
-        mysql_close();
-        ?>
+     //       <?php
+//        } else {
+//            header("location:PersonalInfo.html");
+//        }
+//      
+//        mysql_close();
+//        ?>
         
        
         
@@ -83,4 +83,39 @@
         </div>
         
     </body>
-</html>
+</html>-->
+
+<?php
+session_start();
+$db = mysql_connect('localhost', 'root');
+mysql_select_db('db_hd791183', $db);
+$_SESSION['logins'] = $_POST['login'];
+$_SESSION['passwords'] = $_POST['password'];
+$login = $_SESSION['logins'];
+$password = $_SESSION['passwords'];
+$sql = "SELECT email FROM commandes WHERE `login` = '$login' and `password` = '$password'";
+$req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+$data = mysql_fetch_assoc($req);
+if (!$data['email'] == NULL) {
+    echo "Bienvenue " . $login . "<br>";
+    echo "Vous pouvez modifier les informations personnelles ou lesser les chaps vides ";
+    ?>
+
+    <html>
+        <head>
+            <title>Modification</title>
+            <link rel="stylesheet" type="text/css" href="css/principal.css"  />
+        </head>
+        <body>
+            <form action="Modifications.html" method="post"  enctype="multipart/form-data" >
+                <input type="submit" name="envoi" value="Continuer" />
+            </form>
+        </body>
+    </html>
+
+    <?php
+} else {
+    header("location:PersonalInfo.html");
+}
+mysql_close();
+?>

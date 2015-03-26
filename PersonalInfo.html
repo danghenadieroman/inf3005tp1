@@ -1,4 +1,4 @@
-<html>
+<!--<html>
     <head>
         <title>Information personnel</title>
         <meta charset="UTF-8">
@@ -42,5 +42,39 @@
             </fieldset>
 
         </div>
+    </body>
+</html>-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Information personnel</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/principal.css"  />
+        <script type="text/javascript" src="js/PersonalInfo.js"></script>
+    </head>
+    <body>
+        <form action="index.php" method="post"  enctype="multipart/form-data" onsubmit="return validateForm()">
+            <table>
+                <tr>
+                    <td>Numero de telephone:</td>
+                    <td><input type="text" name="telephone" id="telephone" /></td>
+                </tr>
+                <tr>
+                    <td>Adresse:</td>
+                    <td> <input type="text" name="adresse" id="adresse" /></td>
+                </tr>
+                <tr>
+                    <td>Courriel:</td>
+                    <td><input type="text" name="email" id="email"/></td>
+                </tr>
+                <tr>
+                    <td>Selectionnez un fichier : </td>
+                    <td><input type="file" name="nomDuFichier" id="nomDuFichier"/></td>
+                </tr>
+            </table>
+            <input type="submit" name="envoi" value="Envoyer" />
+        </form>
     </body>
 </html>
