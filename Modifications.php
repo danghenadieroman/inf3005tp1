@@ -56,7 +56,7 @@
                 <form action = "index.php" method = "post" enctype = "multipart/form-data" onsubmit = "return validateForm()">
                     <table>
                         <tr>
-                            <td>Mod de pass:</td>
+                            <td>Mot de pass:</td>
                             <td><input type = "text" name = "password" value="<?php echo $passwordModif ?>" autofocus /></td>
                         </tr>
                         

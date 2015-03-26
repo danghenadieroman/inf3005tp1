@@ -93,7 +93,7 @@ mysql_close();
 <html>
     <head>
         <!--<meta http-equiv="refresh" content="0; URL='Autorisation.php'" />--> 
-        <script type="text/javascript" src="PersonalInfo.js"></script>
+        <script type="text/javascript" src="js/PersonalInfo.js"></script>
         <link rel="stylesheet" type="text/css" href="css/principal.css"  />
         
     </head>

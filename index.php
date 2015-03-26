@@ -120,7 +120,7 @@ mysql_close();
     <head>
         <link rel="stylesheet" type="text/css" href="css/Style.css"/>
         <link rel="stylesheet" type="text/css" href="css/principal.css"  />
-        <script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
     </head>
     <body>
         <p>
