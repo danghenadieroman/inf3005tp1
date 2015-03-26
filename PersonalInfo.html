@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
     <head>
         <title>Information personnel</title>
@@ -9,27 +8,35 @@
     </head>
     <body>
         <div>
-            <form action="index.php" method="post"  enctype="multipart/form-data" onsubmit="return validateForm()">
-                <table>
-                    <tr>
-                        <td>Numero de telephone:</td>
-                        <td><input type="text" name="telephone" id="telephone" /></td>
-                    </tr>
-                    <tr>
-                        <td>Adresse:</td>
-                        <td> <input type="text" name="adresse" id="adresse" /></td>
-                    </tr>
-                    <tr>
-                        <td>Courriel:</td>
-                        <td><input type="text" name="email" id="email"/></td>
-                    </tr>
-                    <tr>
-                        <td>Selectionnez un fichier : </td>
-                        <td><input type="file" name="nomDuFichier" id="nomDuFichier"/></td>
-                    </tr>
-                </table>
-                <input type="submit" name="envoi" value="Envoyer" />
-            </form>
+            <fieldset>
+                <legend><b>Informations personnels</b></legend>
+                <p>
+                    Veuillez entrer vos données personnels.<br>
+                    Tout les champs sont obligatoirs.<br>
+                </p>
+                <form action="index.php" method="post"  enctype="multipart/form-data" onsubmit="return validateForm()">
+                    <table>
+                        <tr>
+                            <td>Numero de téléphone:</td>
+                            <td><input type="text" name="telephone" id="telephone" autofocus /></td>
+                        </tr>
+                        <tr>
+                            <td>Adresse:</td>
+                            <td> <input type="text" name="adresse" id="adresse" /></td>
+                        </tr>
+                        <tr>
+                            <td>Courriel:</td>
+                            <td><input type="text" name="email" id="email"/></td>
+                        </tr>
+                        <tr>
+                            <td>Séléctionnez le fichier : </td>
+                            <td><input type="file" name="nomDuFichier" id="nomDuFichier"/></td>
+                        </tr>
+                    </table>
+                    <input type="submit" name="envoi" value="Envoyer" />
+                </form>
+            </fieldset>
+
         </div>
     </body>
 </html>

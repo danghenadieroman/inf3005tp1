@@ -17,14 +17,20 @@
 
     </head>
     <body>
+
+
         <div>
             <fieldset>
                 <legend><b>Les donnees personnels</b></legend>
+                <p>
+                    Vous pouvez modifier vos donnees <br>
+                    ou laisser les champs vides 
+                </p>
                 <form action="index.php" method="post"  enctype="multipart/form-data" onsubmit="return validateForm()">
                     <table>
                         <tr>
                             <td>Numero de telephone:</td>
-                            <td><input type="text" name="telephone" /></td>
+                            <td><input type="text" name="telephone"  autofocus /></td>
                         </tr>
                         <tr>
                             <td>Adresse:</td>

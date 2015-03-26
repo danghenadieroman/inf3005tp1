@@ -24,9 +24,9 @@ $largeur = $info[0] . "";
 $hauteur = $info[1] . "";
 
 $ratio = $largeur / $hauteur;
-$hauteur1 = (500 / $ratio);
-$hauteur2 = (800 / $ratio);
-$hauteur3 = (1000 / $ratio);
+$hauteur1 = (200 / $ratio);
+$hauteur2 = (400 / $ratio);
+$hauteur3 = (600 / $ratio);
 
 $db = mysql_connect('localhost', 'root');
 mysql_select_db('db_hd791183', $db);
@@ -98,11 +98,14 @@ mysql_close();
         <script type="text/javascript" src="index.js"></script>
     </head>
     <body>
+        <p>
+            <a href="Autorisation.html"><img src="img/home-icon-white.png" alt="acceuil" height="42" width="42"></a>
+        </p>
         <div>
             <fieldset>
                 <legend><b>Detail de la commande</b></legend>
-                <form action="final.php" method="post"  enctype="multipart/form-data" 
-                      onsubmit="return validateDimentions()">
+
+                <form action="final.php" method="post"  enctype="multipart/form-data" onsubmit="return validateDimentions()">
                     <table>
                         <tr>
                             <td>
@@ -114,14 +117,11 @@ mysql_close();
                             <td>
                                 <select id="mySelect" onchange="sizeFunction()" name="dimentionSelect"> 
                                     <option > </option> 
-                                    <option value = "13 x 
-                                    <?php echo (int) ($hauteur1 / 37.79) ?> 
+                                    <option value = "13 x <?php echo (int) ($hauteur1 / 37.79) ?> 
                                             cm">13 x <?php echo (int) ($hauteur1 / 37.79) ?> cm</option> 
-                                    <option value = "21 x 
-                                    <?php echo (int) ($hauteur2 / 37.79) ?> 
+                                    <option value = "21 x <?php echo (int) ($hauteur2 / 37.79) ?> 
                                             cm">21 x <?php echo (int) ($hauteur2 / 37.79) ?> cm</option> 
-                                    <option value = "26 x 
-                                    <?php echo (int) ($hauteur3 / 37.79) ?> 
+                                    <option value = "26 x <?php echo (int) ($hauteur3 / 37.79) ?> 
                                             cm">26 x <?php echo (int) ($hauteur3 / 37.79) ?> cm</option> 
                                 </select > 
                             </td>
@@ -134,7 +134,7 @@ mysql_close();
                             <td>
                                 <select id="frameType" name="frameType" onchange="materielFunction()">
                                     <option value = "bois" >Bois</option>
-                                    <option value = "metal" >Metal</option>
+                                    <option value = "metal">Metal</option>
                                 </select>
                                 <br>
                             </td>
@@ -148,8 +148,8 @@ mysql_close();
                                 <select id="profondeur" name="profondeur" onchange="profondeurFunction()">
                                     <option value = "1cm"></option>
                                     <option value = "1cm" selected>1 cm</option>
-                                    <option value = "2cm" >2 cm</option>
-                                    <option value = "3cm" >3 cm</option>
+                                    <option value = "2cm">2 cm</option>
+                                    <option value = "3cm">3 cm</option>
                                 </select>
                             </td>
                         </tr>
@@ -214,7 +214,3 @@ mysql_close();
         </div>
     </body>
 </html>
-
-<?
-
-?>

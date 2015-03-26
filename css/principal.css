@@ -1,5 +1,5 @@
 body {
-    background: #000;
+    background: #000000;
     background-image: url("../img/girl1.jpg");
     background-repeat: no-repeat;
     font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
@@ -7,10 +7,14 @@ body {
     color: #ffffff;
 }
 div {
-    position: fixed;
+    position: absolute;
     top: 50px;
     left: 50px;
     
+}
+
+p {
+    font-size: 12px;
 }
 
 table {

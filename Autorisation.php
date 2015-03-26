@@ -1,5 +1,3 @@
-
-
 <html>
     <head>
         <title>Modification</title>
@@ -12,7 +10,6 @@
         $db = mysql_connect('localhost', 'root');
         mysql_select_db('db_hd791183', $db);
 
-
         $_SESSION['logins'] = $_POST['login'];
         $_SESSION['passwords'] = $_POST['password'];
 
@@ -23,17 +20,21 @@
         $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
 
         $data = mysql_fetch_assoc($req);
-        if (!$data['email'] == NULL) {
-            echo "Bienvenue " . $login . "<br>";
-            echo "Vous pouvez modifier les informations personnelles ou laisser les champs vides ";
+        echo "<div>";
+        if ($data['email'] != NULL) {
+            echo "Bienvenue " . $login . "!<br><br>";
+            echo "Si vous voulez vous pouvez modifier les informations personnelles <br> ";
+            echo "ou laisser les champs vides et garder l'information déja fournis";
             ?>
-            <form action="Modifications.html" method="post"  enctype="multipart/form-data" >
+            <form action="Modifications.php" method="post" enctype="multipart/form-data" >
+                <br>
                 <input type="submit" name="envoi" value="Continuer" />
             </form>
             <?php
         } else {
             header("location:PersonalInfo.html");
         }
+        echo "</div>";
         mysql_close();
         ?>
     </body>

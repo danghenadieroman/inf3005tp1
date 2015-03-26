@@ -14,8 +14,10 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error
     </head>
     <link rel="stylesheet" type="text/css" href="css/principal.css"  />
     <body>
+        <p>
+            <a href="Autorisation.html"><img src="img/home-icon-white.png" alt="acceuil" height="42" width="42"></a>
+        </p>
         <h3>La facture a ete envoyee</h3><br>
-        <div>
             <table border="1" width="100%">
                 <tr>
                     <th>login</th><th>password</th><th>telephone</th><th>adresse</th><th>email</th>
@@ -41,7 +43,6 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error
                 ?>
             </table>
 
-        </div>
         <?php
         mysql_close();
         ?>

@@ -5,13 +5,13 @@ function sizeFunction() {
     var hauteur;
     if (i === 1) {
         largeur = 500;
-        hauteur = "<?php '500 / $ratio' ?>";
+        hauteur = "<?php '200 / $ratio' ?>";
     } else if (i === 2) {
         largeur = 800;
-        hauteur = "<?php '800 / $ratio' ?>";
+        hauteur = "<?php '400 / $ratio' ?>";
     } else if (i === 3) {
         largeur = 1000;
-        hauteur = "<?php '1000 / $ratio' ?>";
+        hauteur = "<?php '600 / $ratio' ?>";
     }
     document.getElementById("demo").innerHTML = x.options[i].text;
     document.getElementById("monImage").width = largeur;
@@ -111,4 +111,3 @@ function profondeurFunction() {
         document.getElementById("monImage").style.boxShadow = "30px 30px 5px #888888";
     }
 }
-
