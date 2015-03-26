@@ -16,6 +16,8 @@ $_SESSION['emails'] = $data['email'];
 if (!$data['email'] == NULL) {
     echo "Bienvenue " . $login . "<br>";
     echo "Vous pouvez modifier les informations personnelles ou lesser les chaps vides ";
+    $a = "modifier";
+    $_SESSION['cle'] = $a;
     ?>
 
     <html>
