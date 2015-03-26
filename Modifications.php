@@ -23,10 +23,12 @@
         $db = mysql_connect('localhost', 'root');
         mysql_select_db('db_hd791183', $db);
 
-
         $login = $_SESSION['logins'];
         $password = $_SESSION['passwords'];
 
+        
+        $loginModif = $login;
+        $passwordModif = $password;
         $telephones = "SELECT telephone FROM commandes WHERE `login` = '$login' and `password` = '$password'";
         $adresses = "SELECT adresse FROM commandes WHERE `login` = '$login' and `password` = '$password'";
         $emails = "SELECT email FROM commandes WHERE `login` = '$login' and `password` = '$password'";
@@ -38,7 +40,6 @@
         $data_telephone = mysql_fetch_assoc($req_telefone);
         $data_adresse = mysql_fetch_assoc($req_adresse);
         $data_email = mysql_fetch_assoc($req_email);
-
 
         mysql_close();
         ?>
@@ -54,6 +55,11 @@
                 </p>
                 <form action = "index.php" method = "post" enctype = "multipart/form-data" onsubmit = "return validateForm()">
                     <table>
+                         <tr>
+                            <td>Mod de pass:</td>
+                            <td><input type = "text" name = "password" value="<?php echo $passwordModif ?>" autofocus /></td>
+                        </tr>
+                        
                         <tr>
                             <td>Numéro de téléphone:</td>
                             <td><input type = "text" name = "telephone" value="<?php echo $data_telephone['telephone'] ?>" autofocus /></td>
@@ -74,7 +80,6 @@
                     <input type = "submit" name = "envoi" value = "Envoyer" />
                 </form>
             </fieldset>
-
         </div>
     </body>
 </html>

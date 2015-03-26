@@ -4,13 +4,13 @@ function sizeFunction() {
     var largeur;
     var hauteur;
     if (i === 1) {
-        largeur = 500;
+        largeur = 200;
         hauteur = "<?php '200 / $ratio' ?>";
     } else if (i === 2) {
-        largeur = 800;
+        largeur = 400;
         hauteur = "<?php '400 / $ratio' ?>";
     } else if (i === 3) {
-        largeur = 1000;
+        largeur = 600;
         hauteur = "<?php '600 / $ratio' ?>";
     }
     document.getElementById("demo").innerHTML = x.options[i].text;
@@ -29,7 +29,7 @@ function margeFunction() {
     } else if (i === 2) {
         largeur = "60px";
     } else if (i === 3) {
-        largeur = "120px";
+        largeur = "100px";
     }
 
     document.getElementById("monImage").style.borderWidth = largeur;

@@ -5,6 +5,7 @@ body {
     font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: #ffffff;
+    text-shadow: 2px 3px 3px #000000;
 }
 div {
     position: absolute;

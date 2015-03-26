@@ -1,7 +1,7 @@
 div#photo{
     position: absolute;
     left: 400px;
-    top: 200px;
+    top: 20px;
 }
 #monImage{
     border: 30px solid;

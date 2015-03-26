@@ -11,11 +11,10 @@ $fichierCopie = 'Images/' . $_FILES['nomDuFichier']['name'];
 $fichierCopieSize = 'Images/' . $_FILES['nomDuFichier']['size'];
 if (!file_exists($fichierCopie) && !($fichierTransmisSize == $fichierCopieSize)) {
     move_uploaded_file($fichierCharge, $fichierCopie);
-    echo "Stocke dans : " . $fichierCopie;
+    echo "Stocké dans : " . $fichierCopie;
 } else {
     echo "Ce fichier existe deja!";
 }
-echo "<br>";
 $nomImage = "Images/" . $fichierTransmis;
 $img = '<img src="' . $nomImage . '" id = "monImage"/>';
 
@@ -24,20 +23,42 @@ $largeur = $info[0] . "";
 $hauteur = $info[1] . "";
 
 $ratio = $largeur / $hauteur;
-$hauteur1 = (200 / $ratio);
-$hauteur2 = (400 / $ratio);
-$hauteur3 = (600 / $ratio);
+$hauteur1 = (100 / $ratio);
+$hauteur2 = (200 / $ratio);
+$hauteur3 = (300 / $ratio);
 
 $db = mysql_connect('localhost', 'root');
 mysql_select_db('db_hd791183', $db);
 
 $login = $_SESSION['logins'];
+
+$_SESSION['password'] = $_POST['password'];
+$password = $_SESSION['password'];
+
 $_SESSION['telephones'] = $_POST['telephone'];
 $telephone = $_SESSION['telephones'];
+
 $_SESSION['adresses'] = $_POST['adresse'];
 $adresse = $_SESSION['adresses'];
+
 $_SESSION['emails'] = $_POST['email'];
 $email = $_SESSION['emails'];
+
+if ($password == "" || $password == NULL) {
+    $sqlAncienPassword = "SELECT password FROM commandes WHERE login='$login'";
+    $reqAncienPassword = mysql_query($sqlAncienPassword) or die('Erreur SQL !<br>' . $sqlAncienPassword . '<br>'
+                    . mysql_error());
+    $i = 0;
+    while ($row = mysql_fetch_array($reqAncienPassword)) {
+        $list[$i] = $row['password'];
+        $i++;
+    }
+    $_SESSION['password'] = $list[$i - 1];
+} else {
+    $sqlNouveauPassword = "UPDATE commandes SET password = '$password' WHERE login='$login'";
+    $reqNouveauPassword = mysql_query($sqlNouveauPassword) or die('Erreur SQL !<br>' . $sqlNouveauPassword . '<br>'
+                    . mysql_error());
+}
 
 if ($telephone == "" || $telephone == NULL) {
     $sqlAncienTelephone = "SELECT telephone FROM commandes WHERE login='$login'";
@@ -101,6 +122,9 @@ mysql_close();
         <p>
             <a href="Autorisation.html"><img src="img/home-icon-white.png" alt="acceuil" height="42" width="42"></a>
         </p>
+        <div id="photo">
+            <?php echo $img; ?>
+        </div>
         <div>
             <fieldset>
                 <legend><b>Détails de la commande</b></legend>
@@ -109,16 +133,14 @@ mysql_close();
                     <table>
                         <tr>
                             <td>
-                                <div id="photo">
-                                    <?php echo $img; ?>
-                                </div>
+
                                 Dimensions:
                             </td>
                             <td>
                                 <select id="mySelect" onchange="sizeFunction()" name="dimentionSelect"> 
                                     <option > </option> 
                                     <option value = "13 x <?php echo (int) ($hauteur1 / 37.79) ?> 
-                                            cm">13 x <?php echo (int) ($hauteur1 / 37.79) ?> cm</option> 
+                                            cm">13 x <?php echo (int) ($hauteur1 / 37.79) ?> cm </option> 
                                     <option value = "21 x <?php echo (int) ($hauteur2 / 37.79) ?> 
                                             cm">21 x <?php echo (int) ($hauteur2 / 37.79) ?> cm</option> 
                                     <option value = "26 x <?php echo (int) ($hauteur3 / 37.79) ?> 
