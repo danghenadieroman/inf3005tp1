@@ -2,9 +2,6 @@
 session_start();
 $fichierTransmis = $_FILES['nomDuFichier']['name'];
 $fichierTransmisSize = $_FILES['nomDuFichier']['size'] . "<br />";
-//echo "Son type : ". $_FILES['nomDuFichier']['type']. "<br />";
-//echo "Fichier temporaire : ". $_FILES['nomDuFichier']['tmp_name']. "<br />";
-//echo "Fichier transmis: ". $fichierTransmis. "<br />";
 $fichierCharge = $_FILES['nomDuFichier']['tmp_name'];
 $fichierCopie = 'Images/' . $_FILES['nomDuFichier']['name'];
 $fichierCopieSize = 'Images/' . $_FILES['nomDuFichier']['size'];
