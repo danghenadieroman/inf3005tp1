@@ -1,5 +1,6 @@
 <?php
 session_start();
+echo date("Y/m/d");
 $db = mysql_connect('localhost', 'root');
 mysql_select_db('db_hd791183', $db);
 
