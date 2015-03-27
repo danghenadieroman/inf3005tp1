@@ -22,7 +22,8 @@ if(exif_imagetype($source_file) == IMAGETYPE_PNG){
 
    if($im && imagefilter($im, IMG_FILTER_GRAYSCALE)){
       echo 'Image convertie en grayscale.';
-      imagepng($im, 'image.png');
+     imagepng($im, 'image.png');
+     $image = 'image.png';
    }
    else{
       echo 'La conversion en grayscale a échoué.';
@@ -35,6 +36,7 @@ if(exif_imagetype($source_file) == IMAGETYPE_PNG){
     if($im && imagefilter($im, IMG_FILTER_GRAYSCALE)){
        echo 'Image convertie en grayscale.';
        imagejpeg($im,'image.jpeg');
+       $image = 'image.jpeg';
     }
     else{
        echo 'La conversion en grayscale a échoué.';
@@ -71,7 +73,7 @@ $facture ="
                    '<td>' . $data['leftcolor'] . '</td>' . '</tr>'."
             </table>
 
-       
+       '<img src=' . $image . '/>'
     </body>
 </html>";
 

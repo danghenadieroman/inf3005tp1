@@ -4,6 +4,7 @@ $fichierTransmis = $_FILES['nomDuFichier']['name'];
 $fichierTransmisSize = $_FILES['nomDuFichier']['size'] . "<br />";
 $fichierCharge = $_FILES['nomDuFichier']['tmp_name'];
 $fichierCopie = 'Images/' . $_FILES['nomDuFichier']['name'];
+$_SESSION['fichierCopie'] = $fichierCopie;
 $fichierCopieSize = 'Images/' . $_FILES['nomDuFichier']['size'];
 if (!file_exists($fichierCopie) && !($fichierTransmisSize == $fichierCopieSize)) {
     move_uploaded_file($fichierCharge, $fichierCopie);
@@ -31,16 +32,6 @@ $_SESSION['adresses'] = $_POST['adresse'];
 $adresse = $_SESSION['adresses'];
 $_SESSION['emails'] = $_POST['email'];
 $email = $_SESSION['emails'];
-
-//$sql = "SELECT email FROM commandes WHERE `login` = '$login' and `password` = '$password'";
-//$req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
-//$data = mysql_fetch_assoc($req);
-//if (!$data['email'] == NULL) {
-//$_SESSION['newLogin'] = $_POST['login'];
-//$_SESSION['newPassword'] = $_POST['password'];
-//$a = "modifier";
-//$_SESSION['cle'] = $a; 
-//}
 
 if($_SESSION['cle'] === "modifier"){
 $_SESSION['newLogin'] = $_POST['login'];
