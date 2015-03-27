@@ -15,6 +15,34 @@ echo $to;
 $subject = "HTML email";
 
 
+$source_file = $_SESSION['fichierCopie'];
+
+if(exif_imagetype($source_file) == IMAGETYPE_PNG){
+     $im = imagecreatefrompng($source_file);
+
+   if($im && imagefilter($im, IMG_FILTER_GRAYSCALE)){
+      echo 'Image convertie en grayscale.';
+      imagepng($im, 'image.png');
+   }
+   else{
+      echo 'La conversion en grayscale a échoué.';
+   }
+      imagedestroy($im);
+
+}else{
+     $im = imagecreatefromjpeg($source_file);
+
+    if($im && imagefilter($im, IMG_FILTER_GRAYSCALE)){
+       echo 'Image convertie en grayscale.';
+       imagejpeg($im,'image.jpeg');
+    }
+    else{
+       echo 'La conversion en grayscale a échoué.';
+    }
+       imagedestroy($im);
+}
+
+
 $facture =" 
 <html>
     <head>
