@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo date("Y/m/d");
+$date = date("Y/m/d");
 $db = mysql_connect('localhost', 'root');
 mysql_select_db('db_hd791183', $db);
 
@@ -11,7 +11,6 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error
 $data = mysql_fetch_assoc($req);
                 
 $to = $_SESSION['emails'];
-echo $to;
 $subject = "HTML email";
 
 
@@ -21,7 +20,6 @@ if(exif_imagetype($source_file) == IMAGETYPE_PNG){
      $im = imagecreatefrompng($source_file);
 
    if($im && imagefilter($im, IMG_FILTER_GRAYSCALE)){
-      echo 'Image convertie en grayscale.';
      imagepng($im, 'image.png');
      $image = 'image.png';
    }
@@ -34,7 +32,6 @@ if(exif_imagetype($source_file) == IMAGETYPE_PNG){
      $im = imagecreatefromjpeg($source_file);
 
     if($im && imagefilter($im, IMG_FILTER_GRAYSCALE)){
-       echo 'Image convertie en grayscale.';
        imagejpeg($im,'image.jpeg');
        $image = 'image.jpeg';
     }
@@ -45,7 +42,7 @@ if(exif_imagetype($source_file) == IMAGETYPE_PNG){
 }
 
 $border = intval(substr($_SESSION['border'],0,1)) * 37.79;   
-echo $border;
+
 
 
 $facture =" 
@@ -54,7 +51,7 @@ $facture ="
         <title>Facture</title>
     </head>
     <body>
-        
+        '<p>'.$date.'</p></br>'
             <table >
                 <tr>
                     <th>login</th><th>password</th><th>telephone</th><th>adresse</th><th>email</th>
