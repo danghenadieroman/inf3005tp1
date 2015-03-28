@@ -44,6 +44,9 @@ if(exif_imagetype($source_file) == IMAGETYPE_PNG){
        imagedestroy($im);
 }
 
+$border = intval(substr($_SESSION['border'],0,1)) * 37.79;   
+echo $border;
+
 
 $facture =" 
 <html>
@@ -73,7 +76,7 @@ $facture ="
                    '<td>' . $data['leftcolor'] . '</td>' . '</tr>'."
             </table>
 
-       '<img src=' . $image . '/>'
+       '<img src=' . $image . ' border='.$border.'/>'
     </body>
 </html>";
 
@@ -85,4 +88,3 @@ $mail_sent = @mail( $to, $subject, $facture, $headers );
 echo $mail_sent ? "La facture a été envoyé" : "Erreur!";
        
         ?>
-
